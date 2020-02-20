@@ -17,7 +17,7 @@ function MyVerticallyCenteredModal(props) {
 			</Modal.Header>
 			<Modal.Body>
 				<p>
-					Hello, You are now going to be ridirect to the article site
+					Hello, You are now going to be ridirected to the article site
         </p>
 			</Modal.Body>
 			<Modal.Footer>
