@@ -10,7 +10,6 @@ import Error from './Pages/Error';
 import AppModel from './Components/Redirect';
 import Source from './Components/Source';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
-import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
 
