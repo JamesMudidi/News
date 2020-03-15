@@ -1,19 +1,31 @@
 import React, { Component } from 'react';
 import { Card, CardColumns, Button, Row, Col } from 'react-bootstrap';
+import { css } from "@emotion/core";
+import CircleLoader from "react-spinners/CircleLoader";
 import Footer from '../../Components/Footer';
 import Header from '../../Components/Header';
 
 
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: red;
+`;
+
 class Source extends Component {
-	state = {
-		sources: []
+	constructor(props) {
+		super(props);
+		this.state = {
+			loading: true,
+			sources: []
+		};
 	}
 
 	componentDidMount() {
 		fetch('https://newsapi.org/v2/sources?language=en&apiKey=ee3998a05fc34b3e9f25cce1509dbfd2')
 			.then(res => res.json())
 			.then((data) => {
-				this.setState({ sources: data.sources })
+				this.setState({ loading: false, sources: data.sources })
 				console.log(this.state.sources)
 			})
 			.catch(console.log)
@@ -26,6 +38,14 @@ class Source extends Component {
 				<Header />
 				<div className="container">
 					<h1>Sources</h1>
+					<div className="sweet-loading">
+						<CircleLoader
+							css={override}
+							size={150}
+							color={"#007BFF"}
+							loading={this.state.loading}
+						/>
+					</div>
 					<CardColumns>
 						{this.state.sources.map((sources) => (
 							<Row>
