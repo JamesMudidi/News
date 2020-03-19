@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, CardColumns, Button, Row, Col } from 'react-bootstrap';
+import { Card, Button, Row, Col } from 'react-bootstrap';
 import { css } from "@emotion/core";
 import CircleLoader from "react-spinners/CircleLoader";
 
@@ -9,6 +9,7 @@ const override = css`
   margin: 0 auto;
   border-color: red;
 `;
+
 
 class Content extends Component {
 	constructor(props) {
@@ -30,6 +31,21 @@ class Content extends Component {
 	}
 
 	render() {
+		const articleCards = this.state.articles.map((articles) => (
+			<Col xl={3}>
+				<Card keys={Object.keys(articles)}>
+					<Card.Img variant="top" src={articles.urlToImage} />
+					<Card.Body>
+						<Card.Title>{articles.title}</Card.Title>
+							&nbsp;
+						<Card.Text>{articles.description}</Card.Text>
+						<Button variant="primary" href={articles.url} target="_blank">Read more</Button>
+					</Card.Body>
+					<Card.Footer className="text-muted">Author: {articles.author}<br />Source: {articles.source.name}</Card.Footer>
+				</Card>
+			</Col>
+		))
+
 		return (
 			<div className="container">
 				<h1>Headlines</h1>
@@ -42,24 +58,11 @@ class Content extends Component {
 							loading={this.state.loading}
 						/>
 					</div>
-					<CardColumns>
-						{this.state.articles.map((articles) => (
-							<Row>
-								<Col xl={12}>
-									<Card keys={Object.keys(articles)}>
-										<Card.Img variant="top" src={articles.urlToImage} />
-										<Card.Body>
-											<Card.Title>{articles.title}</Card.Title>
-											&nbsp;
-										<Card.Text>{articles.description}</Card.Text>
-											<Button variant="primary" href={articles.url} target="_blank">Read more</Button>
-										</Card.Body>
-										<Card.Footer className="text-muted">Author: {articles.author}<br />Source: {articles.source.name}</Card.Footer>
-									</Card>
-								</Col>
-							</Row>
-						))}
-					</CardColumns>
+					<Card>
+						<Row>
+							{articleCards}
+						</Row>
+					</Card>
 					<br />
 				</div>
 			</div>

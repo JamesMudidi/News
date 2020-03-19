@@ -1,47 +1,48 @@
-import React from 'react';
-import { Modal, Button } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Tabs, Tab } from 'react-bootstrap';
+import Footer from '../../Components/Footer';
+import Header from '../../Components/Header';
+import Login from '../../Components/Login';
+import Signup from '../../Components/Signup';
+import './index.css'
 
 
-function MyVerticallyCenteredModal(props) {
-	return (
-		<Modal
-			{...props}
-			size="sm"
-			aria-labelledby="contained-modal-title-vcenter"
-			centered
-		>
-			<Modal.Header closeButton>
-				<Modal.Title id="contained-modal-title-vcenter">
-					Redirect
-        </Modal.Title>
-			</Modal.Header>
-			<Modal.Body>
-				<p>
-					Hello, You are now going to be ridirected to the article site
-        </p>
-			</Modal.Body>
-			<Modal.Footer>
-			<Button onClick={props.onHide}>Continue</Button>
-			</Modal.Footer>
-		</Modal>
-	);
+class Content extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			loading: false,
+			articles: []
+		};
+	}
+
+	render() {
+		return (
+			<div>
+				<Header />
+				<div className="container">
+					<div className="contain">
+						<div>
+							<Tabs defaultActiveKey="home" transition={false} id="noanim-tab-example">
+								<Tab eventKey="home" title="Login">
+									<div className="tab">
+										<Login />
+									</div>
+								</Tab>
+								<Tab eventKey="profile" title="Signup">
+								<div className="tab">
+									<Signup />
+								</div>
+								</Tab>
+							</Tabs>
+							<br />
+						</div>
+					</div>
+				</div>
+				<Footer />
+			</div>
+		);
+	}
 }
 
-function AppModel() {
-	const [modalShow, setModalShow] = React.useState(false);
-
-	return (
-		<>
-			<Button variant="primary" onClick={() => setModalShow(true)}>
-				Read More
-      </Button>
-
-			<MyVerticallyCenteredModal
-				show={modalShow}
-				onHide={() => setModalShow(false)}
-			/>
-		</>
-	);
-}
-
-export default AppModel;
+export default Content;
