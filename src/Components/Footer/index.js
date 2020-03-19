@@ -5,7 +5,7 @@ import './footer.css';
 const Footer = () => {
 	return (
 		<footer className='footer bg-grey text-dark'>
-			<Navbar expand="lg" variant="light">
+			<Navbar expand="lg" variant="light" sticky="bottom">
 				<div className="container">
 					<Nav>
 						<Nav.Item>

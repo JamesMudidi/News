@@ -1,0 +1,18 @@
+.contain {
+  padding-left: 15em;
+  padding-right: 15em;
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+ul.nav.nav-tabs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.tab {
+  padding-top: 3em;
+}

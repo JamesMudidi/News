@@ -1,0 +1,19 @@
+.contain {
+  padding-left: 15em;
+  padding-right: 15em;
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+
+.input {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.tab {
+  padding-top: 3em;
+}
