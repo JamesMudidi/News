@@ -1,99 +1,33 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
-import Fab from '@material-ui/core/Fab';
-import Button from '@material-ui/core/Button';
-import ButtonGroup from '@material-ui/core/ButtonGroup';
-import KeyboardArrowUpIcon from '@material-ui/icons/KeyboardArrowUp';
-import Zoom from '@material-ui/core/Zoom';
-import Link from '@material-ui/core/Link';
+import React, { Component } from 'react';
+import { Navbar, Nav } from 'react-bootstrap';
 
 
-const useStyles = makeStyles(theme => ({
-	root: {
-		position: 'fixed',
-		bottom: theme.spacing(2),
-		right: theme.spacing(2),
-	},
-	title: {
-		flexGrow: 1
-	},
-	button: {
-		textTransform: "none",
-		fontSize: '1rem',
-		color: 'white',
+class Header extends Component {
+
+	render() {
+
+		return (
+			<Navbar collapseOnSelect expand="lg" bg="primary" sticky="top" variant="dark">
+				<div className="container">
+					<Navbar.Brand href="/">OpenHouse News</Navbar.Brand>
+					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+					<Navbar.Collapse id="responsive-navbar-nav">
+						<Nav className="mr-auto">
+							<Nav.Link href="/">General</Nav.Link>
+							<Nav.Link href="/sports">Sports</Nav.Link>
+							<Nav.Link href="/entertainment">Entertainment</Nav.Link>
+							<Nav.Link href="/technology">Technology</Nav.Link>
+							<Nav.Link href="/business">Business</Nav.Link>
+						</Nav>
+						<Nav>
+						<Nav.Link href="/source">Our Sources</Nav.Link>
+						<Nav.Link href="/login">Login</Nav.Link>
+						<Nav.Link href="/register">Register</Nav.Link>
+						</Nav>
+					</Navbar.Collapse>
+				</div>
+			</Navbar>
+		);
 	}
-}));
-
-function ScrollTop(props) {
-	const { children, window } = props;
-	const classes = useStyles();
-	// Note that you normally won't need to set the window ref as useScrollTrigger
-	// will default to window.
-	// This is only being set here because the demo is in an iframe.
-	const trigger = useScrollTrigger({
-		target: window ? window() : undefined,
-		disableHysteresis: true,
-		threshold: 100,
-	});
-
-	const handleClick = event => {
-		const anchor = (event.target.ownerDocument || document).querySelector('#back-to-top-anchor');
-		if (anchor) {
-			anchor.scrollIntoView({ behavior: 'smooth', block: 'center' });
-		}
-	};
-
-	return (
-		<Zoom in={trigger}>
-			<div onClick={handleClick} role="presentation" className={classes.root}>
-				{children}
-			</div>
-		</Zoom>
-	);
 }
-
-ScrollTop.propTypes = {
-	children: PropTypes.element.isRequired,
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
-	window: PropTypes.func,
-};
-
-export default function Header(props) {
-	const classes = useStyles();
-	return (
-		<React.Fragment>
-			<CssBaseline />
-			<AppBar>
-				<Toolbar>
-					<Typography variant="h6" className={classes.title}>OpenHouse News</Typography>
-					<ButtonGroup aria-label="text primary button group" color="inherit" variant="text">
-						<Link href="/">
-							<Button className={classes.button}>Home</Button>
-						</Link>
-						<Link href="/everything">
-							<Button className={classes.button}>Headlines</Button>
-						</Link>
-						<Link href="/source">
-							<Button className={classes.button}>Sources</Button>
-						</Link>
-					</ButtonGroup>
-				</Toolbar>
-			</AppBar>
-			<Toolbar id="back-to-top-anchor" />
-			<ScrollTop {...props}>
-				<Fab color="primary" size="small" aria-label="scroll back to top">
-					<KeyboardArrowUpIcon />
-				</Fab>
-			</ScrollTop>
-		</React.Fragment>
-	);
-}
+export default Header;

@@ -2,12 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Landing from './Pages/Landing';
 import Contact from './Pages/Contact';
+import Business from './Components/Business'
+import Technology from './Components/Technology'
+import Sports from './Components/Sports'
+import Entertainment from './Components/Entertainment'
 import Error from './Pages/Error';
-import Article from './Components/Article';
-import Everything from './Components/Everything';
+import AppModel from './Components/Redirect';
+import Login from './Components/Login';
+import Register from './Components/Signup';
 import Source from './Components/Source';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom'
-import './index.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
 
 
@@ -17,9 +22,15 @@ const routing = (
 			<Switch>
 				<Route exact path="/" component={Landing} />
 				<Route path="/contact" component={Contact} />
-				<Route path="/article" component={Article} />
-				<Route path="/everything" component={Everything} />
+				<Route path="/redirect" component={AppModel} />
+				<Route path="/login" component={Login} />
+				<Route path="/register" component={Register} />
 				<Route path="/source" component={Source} />
+				<Route path="/business" component={Business} />
+				<Route path="/technology" component={Technology} />
+				<Route path="/sports" component={Sports} />
+				<Route path="/entertainment" component={Entertainment} />
+				<Route path="/auth" component={AppModel} />
 				<Route component={Error} />
 			</Switch>
 		</div>

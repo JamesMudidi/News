@@ -1,49 +1,34 @@
-import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Link from '@material-ui/core/Link';
+import React from "react";
+import { Nav, Navbar } from "react-bootstrap";
+import './footer.css';
 
-function Copyright() {
-	const classes = useStyles();
+const Footer = () => {
 	return (
-			<Typography className={classes.info}>
-				<Typography  className={classes.info} variant="h6" gutterBottom>OpenHouse News</Typography>
-				<Typography variant="subtitle1" component="p">Be Informed</Typography>
-				<Typography variant="body2" color="textSecondary">
-					{'Copyright © '}
-					<Link color="inherit" href="/">
-						OpenHouse News
-          </Link>{' '}
-					{new Date().getFullYear()}
-					{'.'}
-				</Typography>
-			</Typography>
+		<footer className='footer bg-grey text-dark'>
+			<Navbar expand="lg" variant="light" sticky="bottom">
+				<div className="container">
+					<Nav>
+						<Nav.Item>
+							<Nav.Link href="/" className='font-weight-bold'>
+								&copy; {new Date().getFullYear()} OpenHouse News
+							</Nav.Link>
+						</Nav.Item>
+					</Nav>
+					<Nav className="justify-content-end font-weight-bold">
+						<Nav.Item>
+							<Nav.Link href="#">Terms</Nav.Link>
+						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link href="#">About Us</Nav.Link>
+						</Nav.Item>
+						<Nav.Item>
+							<Nav.Link href="#">Contact Us</Nav.Link>
+						</Nav.Item>
+					</Nav>
+				</div>
+			</Navbar>
+		</footer>
 	);
-}
+};
 
-const useStyles = makeStyles(theme => ({
-	footer: {
-		backgroundColor: 'gainsboro',
-		padding: theme.spacing(5),
-	},
-	menu: {
-	},
-	info: {
-		flexGrow: 1
-	},
-}));
-
-
-export default function Footer() {
-	const classes = useStyles();
-
-	return (
-		<React.Fragment>
-			<CssBaseline />
-			<footer className={classes.footer}>
-				<Copyright />
-			</footer>
-		</React.Fragment>
-	);
-}
+export default Footer;
